@@ -29,7 +29,7 @@ ZSH_THEME="blinks"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(python)
+plugins=(git git-extras python)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,12 +45,8 @@ alias 'gsup=git-smart-pull'
 alias 'gsl=git-smart-log'
 alias 'gscommit=git show --pretty="format:" --name-only'
 
-# SSH aliases
-#alias -g tptest='root@172.16.142.165'
-#alias -g mysite='tojochacko@ftp.tojochacko.com'
-#alias -g whoisskenzo='root@172.16.142.148'
 
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 function gvim () { (/usr/bin/gvim -f "$@" &) }
 
@@ -71,3 +67,4 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias ae="sudo $EDITOR /etc/apt/sources.list"
 alias aL="dpkg -L"
+alias muc="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
