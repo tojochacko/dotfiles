@@ -44,6 +44,7 @@ alias 'py=python'
 alias 'gsup=git-smart-pull'
 alias 'gsl=git-smart-log'
 alias 'gscommit=git show --pretty="format:" --name-only'
+alias 'sv=sudo vim'
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
