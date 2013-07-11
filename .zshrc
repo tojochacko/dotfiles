@@ -69,3 +69,5 @@ alias upgrade='sudo apt-get upgrade'
 alias ae="sudo $EDITOR /etc/apt/sources.list"
 alias aL="dpkg -L"
 alias muc="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
+alias retag="ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=capistrano *"
+alias disku="du -sh *"
