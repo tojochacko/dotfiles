@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="blinks"
+ZSH_THEME="dpoggi"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -34,7 +34,7 @@ plugins=(git git-extras python)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/tojo/Fun/mozilla/android-sdk/sdk/platform-tools
 
 
 #Short Command Aliases
@@ -45,12 +45,11 @@ alias 'gsup=git-smart-pull'
 alias 'gsl=git-smart-log'
 alias 'gscommit=git show --pretty="format:" --name-only'
 alias 'sv=sudo vim'
-alias 'size=du -sh *'
+
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 function gvim () { (/usr/bin/gvim -f "$@" &) }
-
 
 alias l="ls -GlAh --color"
 alias ls="ls --color=auto -Fh --group-directories-first"
@@ -71,3 +70,5 @@ alias aL="dpkg -L"
 alias muc="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 alias retag="ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=capistrano *"
 alias disku="du -sh *"
+alias codechef="cd ~/Fun/codechef"
+alias server="python -m SimpleHTTPServer"
