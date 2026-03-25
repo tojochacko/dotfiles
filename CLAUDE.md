@@ -63,3 +63,11 @@
 - For complex features, use implementation phases.
 - Check the `docs/` folder for existing architecture and design decisions before planning.
 - Save feature plans as `{feature-name}.md` in a `features/` or `docs/` directory.
+
+## Context Window Hygiene
+- Use the Agent tool for any task that produces large output or requires broad exploration: running tests, searching unfamiliar codebases, multi-file research.
+- Never run test suites or open-ended searches directly in the main conversation — delegate to a subagent to keep the context clean.
+
+## Docker
+- Prefer `docker compose exec <service>` over `docker compose run --rm` when the stack is already running — reuses the existing container, avoids startup overhead and OOM-killed container accumulation.
+- Only fall back to `docker compose run --rm` if the service is not running.
