@@ -41,6 +41,8 @@
 - Aim for 80%+ coverage on core logic.
 - Mock all external services (APIs, databases) in tests — no live calls in CI.
 - Use `conftest.py` for shared fixtures.
+- Verify all tests pass before committing. Report the test count and pass/fail status.
+- When tests fail, fix the root cause — don't just adjust test expectations unless the test was genuinely wrong.
 
 ## Security
 - Never commit secrets — use environment variables.
@@ -69,5 +71,22 @@
 - Never run test suites or open-ended searches directly in the main conversation — delegate to a subagent to keep the context clean.
 
 ## Docker
+- All code runs inside Docker containers. Do NOT use git worktrees.
+- File edits must account for volume mounts — if files aren't bind-mounted, changes won't appear in the container.
+- Before suggesting Docker-related fixes, check docker-compose.yml for actual volume mounts and service configuration.
+- Never hallucinate docker-compose filenames; read the actual files first.
 - Prefer `docker compose exec <service>` over `docker compose run --rm` when the stack is already running — reuses the existing container, avoids startup overhead and OOM-killed container accumulation.
 - Only fall back to `docker compose run --rm` if the service is not running.
+
+## Reading Large Files
+When reading large files , run `wc -l` first to check the line count. If the file is over 2000 lines, use the `offset` and `limit` parameters on the Read tool to read in chunks rather than attempting to read the entire file at once.
+
+## Debugging Approach
+- When fixing bugs, prefer the simplest solution first. Do not cycle through multiple complex approaches.
+- If a fix doesn't work on the first attempt, stop and re-analyze the root cause before trying another fix.
+- Never go back and forth between approaches (e.g., toggling between OAuth client types). If unsure, ask the user.
+
+## Change Scope
+- When asked to remove a feature, remove it completely. Don't try to fix or replace it unless asked.
+- Prefer minimal, targeted changes. Avoid excessive refactoring beyond what was requested.
+- If the user suggests a simpler approach, adopt it immediately rather than defending the complex one.
